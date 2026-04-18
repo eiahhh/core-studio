@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Core Studio — About Us</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: '#08080a',
+                        cream: '#f0e8d6',
+                        gold: '#c8a86c',
+                        mint: '#3dffa0',
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+
+<body class="bg-ink text-cream overflow-x-hidden">
+
+    <!-- NAV BAR -->
+    <nav
+        class="fixed top-0 inset-x-0 z-50 flex justify-between items-center px-6 md:px-14 py-5  backdrop-blur-lg border-b border-cream/5">
+        <a href="index.html"
+            class="font-display text-2xl font-bold tracking-widest text-cream hover:text-gold transition-colors duration-300">Core<span
+                class="text-gold">.</span></a>
+        <ul class="hidden md:flex gap-9 text-xs tracking-widest uppercase">
+            <li><a href="index.html"
+                    class="text-cream opacity-40 hover:opacity-100 hover:text-gold transition-all duration-200">Why
+                    Us</a></li>
+            <li><a href="services.html"
+                    class="text-cream opacity-40 hover:opacity-100 hover:text-gold transition-all duration-200">Services</a>
+            </li>
+            <li><a href="about.html"
+                    class="text-cream opacity-40 hover:opacity-100 hover:text-gold transition-all duration-200">About</a>
+            </li>
+            <li><a href="game.html"
+                    class="text-cream opacity-40 hover:opacity-100 hover:text-gold transition-all duration-200">Game</a>
+            </li>
+            <li><a href="faq.html"
+                    class="text-cream opacity-40 hover:opacity-100 hover:text-gold transition-all duration-200">FAQ</a>
+            </li>
+        </ul>
+
+        <a href="mailto:hello@core.studio"
+            class="hidden md:inline-block text-xs tracking-widest uppercase border border-gold/60 text-gold px-5 py-2.5 hover:bg-gold hover:text-ink transition-all duration-200">Let's
+            Talk</a>
+
+        <!-- MOBILE MENU BUTTON -->
+        <button id="menuBtn" class="md:hidden text-cream opacity-60 hover:opacity-100 transition-opacity"
+            onclick="toggleMenu()">
+            <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+        </button>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu"
+        class="hidden fixed inset-0 z-40 backdrop-blur-xl flex-col items-center justify-center gap-8 pt-20">
+        <a href="index.html" class="font-display text-3xl font-semibold text-cream hover:text-gold transition-colors"
+            onclick="toggleMenu()">Why Us</a>
+        <a href="services.html" class="font-display text-3xl font-semibold text-cream hover:text-gold transition-colors"
+            onclick="toggleMenu()">Services</a>
+        <a href="about.html" class="font-display text-3xl font-semibold text-cream hover:text-gold transition-colors"
+            onclick="toggleMenu()">About</a>
+        <a href="game.html" class="font-display text-3xl font-semibold text-cream hover:text-gold transition-colors"
+            onclick="toggleMenu()">Game</a>
+        <a href="faq.html" class="font-display text-3xl font-semibold text-cream hover:text-gold transition-colors"
+            onclick="toggleMenu()">FAQ</a>
+        <a href="mailto:hello@core.studio"
+            class="mt-4 text-xs tracking-widest uppercase border border-gold text-gold px-8 py-4 hover:bg-gold hover:text-ink transition-all">Let's
+            Talk</a>
+    </div>
+
+    <!-- PAGE HERO -->
+    <section class="about-bg relative pt-36 pb-20 px-6 md:px-14 border-b border-cream/10 overflow-hidden">
+        <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+        <div class="absolute inset-0 pointer-events-none"
+            style="background:radial-gradient(ellipse 70% 60% at 50% 50%, rgba(200,168,108,0.06) 0%, transparent 68%);">
+        </div>
+        <p class="reveal anim-fade-up-1 text-xs tracking-widest uppercase text-cream mb-4">Our Purpose</p>
+        <h1 class="reveal anim-fade-up-2 font-display font-semibold leading-none"
+            style="font-size:clamp(3rem,9vw,7.5rem);">
+            Why we<br /><em class="text-gold italic">exist.</em>
+        </h1>
+        <p class="reveal anim-fade-up-3 mt-6 text-cream leading-loose max-w-sm tracking-wide">
+            Behind every campaign is a core belief. At Core Studio, we exist to transform how brands communicate—turning
+            ideas into influence, and attention into measurable growth.
+        </p>
+    </section>
+
+    <!-- MISSION -->
+    <section class="px-6 md:px-14 py-28 border-b border-cream/10">
+        <div class="flex flex-col lg:flex-row gap-16 lg:gap-24">
+
+            <!-- LABEL -->
+            <div class="lg:w-1/3 reveal">
+                <div class="flex items-center gap-5 lg:sticky lg:top-28">
+                    <div class="w-px h-20 bg-gold shrink-0"></div>
+                    <div>
+                        <p class="text-xs tracking-widest uppercase text-gold mb-3">01</p>
+                        <h2 class="font-display font-semibold" style="font-size:clamp(2.5rem,5vw,4.5rem);">Mission.</h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTENT -->
+            <div class="lg:w-2/3 reveal reveal-d1">
+                <blockquote
+                    class="font-display italic text-cream/80 leading-relaxed mb-10 border-l-2 border-gold/50 pl-8"
+                    style="font-size:clamp(1.3rem,2.5vw,1.85rem);">
+                    "To build brands that don’t just exist in the market—but lead it—through strategic clarity, creative
+                    precision, and meaningful connection."
+                </blockquote>
+                <p class="text-cream/80 leading-loose mb-6 tracking-wide">
+                    Every project begins with intent. Whether we’re shaping a new brand or scaling an established one,
+                    we approach each challenge with discipline, curiosity, and a deep understanding of audience
+                    behavior. </p>
+                <p class="text-cream/80 leading-loose tracking-wide">
+                    We don’t create for the sake of output—we create for impact.
+                    Every visual, every message, every campaign is designed to move people and drive results.<br><br>
+                    We believe marketing should feel seamless, but be powered by structure—where creativity and strategy
+                    work as one system. </p>
+
+                <!-- MISSION -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-cream/10 mt-12">
+                    <div class="bg-ink p-6">
+                        <p class="text-gold font-display text-2xl font-semibold mb-2">Clarity</p>
+                        <p class="text-cream/40 leading-loose tracking-wide">We simplify complexity—ensuring
+                            your brand communicates with precision and purpose.</p>
+                    </div>
+                    <div class="bg-ink p-6">
+                        <p class="text-gold font-display text-2xl font-semibold mb-2">Impact</p>
+                        <p class="text-cream/40 leading-loose tracking-wide">We focus on work that performs. Not
+                            just seen, but remembered and acted upon.</p>
+                    </div>
+                    <div class="bg-ink p-6">
+                        <p class="text-gold font-display text-2xl font-semibold mb-2">Consistency</p>
+                        <p class="text-cream/40 leading-loose tracking-wide">We build systems that scale—so your
+                            brand stays strong across every platform and touchpoint.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- VISION -->
+    <section class="px-6 md:px-14 py-28 border-b border-cream/10">
+        <div class="flex flex-col lg:flex-row gap-16 lg:gap-24">
+
+            <!-- LABEL -->
+            <div class="lg:w-1/3 reveal">
+                <div class="flex items-center gap-5 lg:sticky lg:top-28">
+                    <div class="w-px h-20 bg-gold shrink-0"></div>
+                    <div>
+                        <p class="text-xs tracking-widest uppercase text-gold mb-3">02</p>
+                        <h2 class="font-display font-semibold" style="font-size:clamp(2.5rem,5vw,4.5rem);">Vision.</h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTENT -->
+            <div class="lg:w-2/3 reveal reveal-d1">
+                <blockquote
+                    class="font-display italic text-cream/80 leading-relaxed mb-10 border-l-2 border-gold/50 pl-8"
+                    style="font-size:clamp(1.3rem,2.5vw,1.85rem);">
+                    "A future where brands communicate with intention, stand with identity, and grow through meaningful,
+                    data-driven creativity."
+                </blockquote>
+                <p class="text-cream/80 leading-loose mb-6 tracking-wide">
+                    We envision a space where marketing is no longer noise—but signal. Where brands don’t compete for
+                    attention—they earn it through relevance and authenticity.
+                </p>
+                <p class="text-cream/80 leading-loose tracking-wide">
+                    Core Studio aims to become a driving force behind that shift—helping businesses evolve into brands
+                    that are not only seen, but trusted and followed.<br><br>
+                    Our long-term vision is to redefine modern marketing—where creative excellence meets measurable
+                    growth, and where every brand we touch becomes stronger, sharper, and more impactful.
+                </p>
+
+                <!-- VISION-->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-cream/10 mt-12">
+                    <div class="bg-ink p-6">
+                        <p class="text-gold font-display text-2xl font-semibold mb-2">Relevance</p>
+                        <p class="text-cream/40 leading-loose tracking-wide">Brands that speak to the right
+                            audience, at the right time, with the right message.</p>
+                    </div>
+                    <div class="bg-ink p-6">
+                        <p class="text-gold font-display text-2xl font-semibold mb-2">Innovation</p>
+                        <p class="text-cream/40 leading-loose tracking-wide">Creative and strategic thinking
+                            that evolves with the digital landscape.</p>
+                    </div>
+                    <div class="bg-ink p-6">
+                        <p class="text-gold font-display text-2xl font-semibold mb-2">Growth</p>
+                        <p class="text-cream/40 leading-loose tracking-wide">Sustainable, data-backed
+                            progress—not short-term spikes, but long-term success.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALUES -->
+    <section class="px-6 md:px-14 py-24">
+        <p class="text-xs tracking-widest uppercase text-gold mb-12 reveal">Our Values</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="reveal">
+                <p class="font-display text-4xl font-semibold text-gold mb-3">Strategy</p>
+                <p class="text-cream/80 leading-loose">We think before we create. Every move is intentional,
+                    guided by insight and purpose.</p>
+            </div>
+            <div class="reveal reveal-d1">
+                <p class="font-display text-4xl font-semibold text-gold mb-3">Creativity</p>
+                <p class="text-cream/80 leading-loose">We push beyond the expected—crafting ideas that stand out
+                    in a saturated space.</p>
+            </div>
+            <div class="reveal reveal-d2">
+                <p class="font-display text-4xl font-semibold text-gold mb-3">Precision</p>
+                <p class="text-cream/80 leading-loose">Details matter. From visuals to data, we refine
+                    everything to perform at its best.</p>
+            </div>
+            <div class="reveal reveal-d3">
+                <p class="font-display text-4xl font-semibold text-gold mb-3">Partnership</p>
+                <p class="text-cream/80 leading-loose">We work with you, not for you. Your goals become our
+                    direction, your growth our priority.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer
+        class="px-6 md:px-14 py-8 border-t border-cream/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <a href="index.html"
+            class="font-display text-2xl font-bold tracking-widest uppercase hover:text-gold transition-colors duration-200">
+            Core<span class="text-gold">.</span>
+        </a>
+        <p class="text-xs tracking-widest uppercase text-cream/20">© 2026 Core Studio. All rights reserved.</p>
+        <div class="flex gap-6 text-xs tracking-widest uppercase text-cream/35">
+            <a href="#" class="hover:text-gold hover:opacity-100 transition-all duration-200">Instagram</a>
+            <a href="#" class="hover:text-gold hover:opacity-100 transition-all duration-200">Facebook</a>
+            <a href="#" class="hover:text-gold hover:opacity-100 transition-all duration-200">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script>
+        /* Mobile Menu */
+        function toggleMenu() {
+            const m = document.getElementById('mobileMenu');
+            m.classList.toggle('hidden');
+            m.classList.toggle('flex');
+        }
+
+        /* Scroll Reveal */
+        const ro = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+        /* Highlight active nav */
+        document.querySelectorAll('nav a').forEach(a => {
+            if (a.href === location.href) a.classList.add('nav-link-active');
+        });
+    </script>
+</body>
+
+</html>

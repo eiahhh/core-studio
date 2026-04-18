@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Core Studio — Marketing Agency</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: '#08080a',
+                        cream: '#f0e8d6',
+                        gold: '#c8a86c',
+                        mint: '#3dffa0',
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+
+<body class="bg-ink text-cream overflow-x-hidden">
+
+    <!-- NAV BAR -->
+    <nav
+        class="fixed top-0 inset-x-0 z-50 flex justify-between items-center px-6 md:px-14 py-5  backdrop-blur-lg border-b border-cream/5">
+        <a href="index.html"
+            class="font-display text-2xl font-bold tracking-widest text-cream hover:text-gold transition-colors duration-300">Core<span
+                class="text-gold">.</span></a>
+        <ul class="hidden md:flex gap-9 text-xs tracking-widest uppercase">
+            <li><a href="index.html"
+                    class="text-cream opacity-40 hover:opacity-100 hover:text-gold transition-all duration-200">Why
+                    Us</a></li>
+            <li><a href="services.html"
+                    class="text-cream opacity-40 hover:opacity-100 hover:text-gold transition-all duration-200">Services</a>
+            </li>
+            <li><a href="about.html"
+                    class="text-cream opacity-40 hover:opacity-100 hover:text-gold transition-all duration-200">About</a>
+            </li>
+            <li><a href="game.html"
+                    class="text-cream opacity-40 hover:opacity-100 hover:text-gold transition-all duration-200">Game</a>
+            </li>
+            <li><a href="faq.html"
+                    class="text-cream opacity-40 hover:opacity-100 hover:text-gold transition-all duration-200">FAQ</a>
+            </li>
+        </ul>
+
+        <a href="mailto:hello@core.studio"
+            class="hidden md:inline-block text-xs tracking-widest uppercase border border-gold/60 text-gold px-5 py-2.5 hover:bg-gold hover:text-ink transition-all duration-200">Let's
+            Talk</a>
+
+        <!-- MOBILE MENU BUTTON -->
+        <button id="menuBtn" class="md:hidden text-cream opacity-60 hover:opacity-100 transition-opacity"
+            onclick="toggleMenu()">
+            <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+        </button>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu"
+        class="hidden fixed inset-0 z-40 backdrop-blur-xl flex-col items-center justify-center gap-8 pt-20">
+        <a href="index.html" class="font-display text-3xl font-semibold text-cream hover:text-gold transition-colors"
+            onclick="toggleMenu()">Why Us</a>
+        <a href="services.html" class="font-display text-3xl font-semibold text-cream hover:text-gold transition-colors"
+            onclick="toggleMenu()">Services</a>
+        <a href="about.html" class="font-display text-3xl font-semibold text-cream hover:text-gold transition-colors"
+            onclick="toggleMenu()">About</a>
+        <a href="game.html" class="font-display text-3xl font-semibold text-cream hover:text-gold transition-colors"
+            onclick="toggleMenu()">Game</a>
+        <a href="faq.html" class="font-display text-3xl font-semibold text-cream hover:text-gold transition-colors"
+            onclick="toggleMenu()">FAQ</a>
+        <a href="mailto:hello@core.studio"
+            class="mt-4 text-xs tracking-widest uppercase border border-gold text-gold px-8 py-4 hover:bg-gold hover:text-ink transition-all">Let's
+            Talk</a>
+    </div>
+
+    <!-- PAGE HEADER -->
+    <section class="pt-36 pb-12 px-6 md:px-14 flex flex-col justify-center items-center border-b border-cream/10">
+        <p class="reveal anim-fade-up-1 text-xs tracking-widest justify-center items-center uppercase text-cream mb-4">
+            Mini Game</p>
+        <h1 class="reveal anim-fade-up-2 font-display font-semibold leading-none"
+            style="font-size:clamp(3rem,9vw,7.5rem);">Take a <em class="text-gold italic">break.</em></h1>
+        <p
+            class="reveal anim-fade-up-3 mt-5 text-sm text-cream/80 text-center items-center leading-loose max-w-sm tracking-wide">
+            Flip cards to match marketing concept pairs. A little fun — courtesy of Core Studio.
+        </p>
+    </section>
+
+    <!-- GAME AREA -->
+    <section class="pt-36 pb-12 px-6 md:px-14 flex flex-col justify-center items-center border-b border-cream/10">
+        <div class="game-wrapper">
+            <canvas id="gameCanvas" width="480" height="480"></canvas>
+            <div class="game-ui">
+                <div class="game-score"><span>Score</span><span id="scoreDisplay">0</span></div>
+                <div class="game-score"><span>Moves</span><span id="movesDisplay">0</span></div>
+                <div class="game-score"><span>Time</span><span id="timerDisplay">00:00</span></div>
+                <button id="restartBtn">↺</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer
+        class="px-6 md:px-14 py-8 border-t border-cream/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <a href="index.html"
+            class="font-display text-2xl font-bold tracking-widest uppercase hover:text-gold transition-colors duration-200">
+            Core<span class="text-gold">.</span>
+        </a>
+        <p class="text-xs tracking-widest uppercase text-cream/20">© 2026 Core Studio. All rights reserved.</p>
+        <div class="flex gap-6 text-xs tracking-widest uppercase text-cream/35">
+            <a href="#" class="hover:text-gold hover:opacity-100 transition-all duration-200">Instagram</a>
+            <a href="#" class="hover:text-gold hover:opacity-100 transition-all duration-200">Facebook</a>
+            <a href="#" class="hover:text-gold hover:opacity-100 transition-all duration-200">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script>
+        /* Mobile Menu */
+        function toggleMenu() {
+            const m = document.getElementById('mobileMenu');
+            m.classList.toggle('hidden');
+            m.classList.toggle('flex');
+        }
+
+        /* Scroll Reveal */
+        const ro = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+        /* Highlight active nav */
+        document.querySelectorAll('nav a').forEach(a => {
+            if (a.href === location.href) a.classList.add('nav-link-active');
+        });
+
+        // ─── CORE STUDIO STUDIO — MATCH THE BRAND GAME ────────────────────────────────────────
+        // Pure Vanilla JS, No Libraries
+
+        (function () {
+            const canvas = document.getElementById('gameCanvas');
+            const ctx = canvas.getContext('2d');
+            const scoreEl = document.getElementById('scoreDisplay');
+            const movesEl = document.getElementById('movesDisplay');
+            const timerEl = document.getElementById('timerDisplay');
+            const restartBtn = document.getElementById('restartBtn');
+
+            // ─── CONFIG ────────────────────────────────
+            const COLS = 4;
+            const ROWS = 4;
+            const TOTAL = COLS * ROWS; // 16 cards = 8 pairs
+            const PAD = 14;
+
+            const CARD_W = (canvas.width - PAD * (COLS + 1)) / COLS;
+            const CARD_H = (canvas.height - PAD * (ROWS + 1)) / ROWS;
+
+            // ─── COLORS ────────────────────────────────
+            const PALETTE = {
+                bg: '#0E0D0C',
+                cardBack: '#1A1815',
+                cardFront: '#1E1C18',
+                cardBorder: '#2A2620',
+                cardBorderMatch: '#C8A96E',
+                cardFlipping: '#242018',
+                textMain: '#F5F2EC',
+                textSub: '#7A7570',
+                accent: '#C8A96E',
+                matchGlow: 'rgba(200,169,110,0.18)',
+                wrongFlash: '#3D1C1C',
+            };
+
+            // ─── CARD CONTENT (8 pairs) ──────────────
+            const PAIRS = [
+                { icon: '🎯', label: 'Strategy' },
+                { icon: '📊', label: 'Analytics' },
+                { icon: '✦', label: 'Creative' },
+                { icon: '📱', label: 'Social' },
+                { icon: '🔍', label: 'SEO' },
+                { icon: '📣', label: 'Campaign' },
+                { icon: '🤝', label: 'Branding' },
+                { icon: '⚡', label: 'Growth' },
+            ];
+
+            // ─── STATE ─────────────────────────────────
+            let cards = [];
+            let flipped = [];
+            let matched = [];
+            let locked = false;
+            let score = 0;
+            let moves = 0;
+            let timerInterval = null;
+            let elapsed = 0;
+            let gameWon = false;
+
+            // ─── CARD FLIP ANIMATION ─────────────────
+            // Each card has: id, pairId, icon, label,
+            //   x, y, w, h, flipped, matched,
+            //   flipProgress (0..1), flipDir (1=opening, -1=closing)
+
+            function buildDeck() {
+                let deck = [];
+                PAIRS.forEach((p, i) => {
+                    deck.push({ pairId: i, icon: p.icon, label: p.label });
+                    deck.push({ pairId: i, icon: p.icon, label: p.label });
+                });
+                // Fisher-Yates shuffle
+                for (let i = deck.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [deck[i], deck[j]] = [deck[j], deck[i]];
+                }
+                return deck.map((d, idx) => ({
+                    id: idx,
+                    pairId: d.pairId,
+                    icon: d.icon,
+                    label: d.label,
+                    x: PAD + (idx % COLS) * (CARD_W + PAD),
+                    y: PAD + Math.floor(idx / COLS) * (CARD_H + PAD),
+                    w: CARD_W,
+                    h: CARD_H,
+                    isFlipped: false,
+                    isMatched: false,
+                    flipProgress: 0,   // 0 = face-down, 1 = face-up
+                    animating: false,
+                    wrongFlash: 0,     // countdown for red flash
+                    matchGlow: 0,      // countdown for gold glow
+                }));
+            }
+
+            function initGame() {
+                clearInterval(timerInterval);
+                cards = buildDeck();
+                flipped = [];
+                matched = [];
+                locked = false;
+                score = 0;
+                moves = 0;
+                elapsed = 0;
+                gameWon = false;
+                updateUI();
+                startTimer();
+                loop();
+            }
+
+            function startTimer() {
+                timerInterval = setInterval(() => {
+                    if (!gameWon) { elapsed++; updateUI(); }
+                }, 1000);
+            }
+
+            function updateUI() {
+                scoreEl.textContent = score;
+                movesEl.textContent = moves;
+                const m = String(Math.floor(elapsed / 60)).padStart(2, '0');
+                const s = String(elapsed % 60).padStart(2, '0');
+                timerEl.textContent = `${m}:${s}`;
+            }
+
+            // ─── DRAW HELPERS ─────────────────────────
+            function roundRect(x, y, w, h, r) {
+                ctx.beginPath();
+                ctx.moveTo(x + r, y);
+                ctx.lineTo(x + w - r, y);
+                ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+                ctx.lineTo(x + w, y + h - r);
+                ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+                ctx.lineTo(x + r, y + h);
+                ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+                ctx.lineTo(x, y + r);
+                ctx.quadraticCurveTo(x, y, x + r, y);
+                ctx.closePath();
+            }
+
+            function drawCardBack(card, scaleX) {
+                const cx = card.x + card.w / 2;
+                const cy = card.y + card.h / 2;
+                const visW = card.w * Math.abs(scaleX);
+
+                ctx.save();
+                ctx.translate(cx, cy);
+                ctx.scale(Math.abs(scaleX), 1);
+                ctx.translate(-card.w / 2, -card.h / 2);
+
+                // Card body
+                roundRect(0, 0, card.w, card.h, 6);
+                ctx.fillStyle = card.wrongFlash > 0 ? PALETTE.wrongFlash : PALETTE.cardBack;
+                ctx.fill();
+                ctx.strokeStyle = PALETTE.cardBorder;
+                ctx.lineWidth = 1;
+                ctx.stroke();
+
+                // EIA logo pattern
+                ctx.fillStyle = 'rgba(200,169,110,0.06)';
+                ctx.font = `bold ${card.w * 0.55}px serif`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('CS.', card.w / 2, card.h / 2);
+
+                // Subtle dot pattern
+                const dotSpacing = 18;
+                ctx.fillStyle = 'rgba(200,169,110,0.04)';
+                for (let dx = dotSpacing; dx < card.w; dx += dotSpacing) {
+                    for (let dy = dotSpacing; dy < card.h; dy += dotSpacing) {
+                        ctx.beginPath();
+                        ctx.arc(dx, dy, 1.5, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+                ctx.restore();
+            }
+
+            function drawCardFront(card, scaleX) {
+                const cx = card.x + card.w / 2;
+                const cy = card.y + card.h / 2;
+
+                ctx.save();
+                ctx.translate(cx, cy);
+                ctx.scale(Math.abs(scaleX), 1);
+                ctx.translate(-card.w / 2, -card.h / 2);
+
+                // Match glow
+                if (card.matchGlow > 0) {
+                    ctx.save();
+                    roundRect(-4, -4, card.w + 8, card.h + 8, 10);
+                    ctx.fillStyle = PALETTE.matchGlow;
+                    ctx.fill();
+                    ctx.restore();
+                }
+
+                // Card body
+                roundRect(0, 0, card.w, card.h, 6);
+                ctx.fillStyle = PALETTE.cardFront;
+                ctx.fill();
+                ctx.strokeStyle = card.isMatched ? PALETTE.cardBorderMatch : PALETTE.cardBorder;
+                ctx.lineWidth = card.isMatched ? 1.5 : 1;
+                ctx.stroke();
+
+                // Icon
+                ctx.font = `${card.h * 0.3}px serif`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(card.icon, card.w / 2, card.h * 0.42);
+
+                // Label
+                ctx.font = `500 ${Math.min(card.w * 0.16, 13)}px 'DM Sans', sans-serif`;
+                ctx.fillStyle = card.isMatched ? PALETTE.accent : PALETTE.textSub;
+                ctx.textBaseline = 'alphabetic';
+                ctx.fillText(card.label.toUpperCase(), card.w / 2, card.h * 0.76);
+
+                // Matched checkmark
+                if (card.isMatched) {
+                    ctx.beginPath();
+                    ctx.arc(card.w - 10, 10, 6, 0, Math.PI * 2);
+                    ctx.fillStyle = PALETTE.accent;
+                    ctx.fill();
+                    ctx.font = 'bold 8px sans-serif';
+                    ctx.fillStyle = '#0E0D0C';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText('✓', card.w - 10, 10);
+                }
+
+                ctx.restore();
+            }
+
+            function drawCard(card) {
+                const progress = card.flipProgress; // 0..1
+
+                // Flip animation: 0→0.5 = back collapses, 0.5→1 = front expands
+                if (progress <= 0.5) {
+                    const scaleX = 1 - progress * 2; // 1→0
+                    drawCardBack(card, scaleX);
+                } else {
+                    const scaleX = (progress - 0.5) * 2; // 0→1
+                    drawCardFront(card, scaleX);
+                }
+            }
+
+            function drawWinOverlay() {
+                ctx.fillStyle = 'rgba(14,13,12,0.82)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.textAlign = 'center';
+                ctx.fillStyle = PALETTE.accent;
+                ctx.font = `italic ${canvas.width * 0.1}px 'DM Serif Display', serif`;
+                ctx.fillText('You\'ve Won!', canvas.width / 2, canvas.height * 0.38);
+
+                ctx.fillStyle = PALETTE.textSub;
+                ctx.font = `${canvas.width * 0.04}px 'DM Sans', sans-serif`;
+                ctx.fillText(`${moves} moves · ${timerEl.textContent}`, canvas.width / 2, canvas.height * 0.5);
+
+                ctx.fillStyle = PALETTE.accent;
+                ctx.font = `${canvas.width * 0.055}px 'DM Serif Display', serif`;
+                ctx.fillText(`Score: ${score}`, canvas.width / 2, canvas.height * 0.6);
+
+                // Restart hint
+                ctx.fillStyle = 'rgba(245,242,236,0.2)';
+                ctx.font = `${canvas.width * 0.032}px 'DM Sans', sans-serif`;
+                ctx.fillText('Click ↺ Restart to play again', canvas.width / 2, canvas.height * 0.72);
+            }
+
+            // ─── ANIMATION LOOP ───────────────────────
+            const FLIP_SPEED = 0.08;
+
+            function loop() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = PALETTE.bg;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                let anyAnimating = false;
+
+                cards.forEach(card => {
+                    const target = card.isFlipped || card.isMatched ? 1 : 0;
+                    if (Math.abs(card.flipProgress - target) > 0.002) {
+                        card.flipProgress += (target - card.flipProgress) * FLIP_SPEED * 3;
+                        if (Math.abs(card.flipProgress - target) < 0.002) card.flipProgress = target;
+                        anyAnimating = true;
+                    }
+                    if (card.wrongFlash > 0) { card.wrongFlash -= 0.05; anyAnimating = true; }
+                    if (card.matchGlow > 0) { card.matchGlow -= 0.02; anyAnimating = true; }
+                    drawCard(card);
+                });
+
+                if (gameWon) drawWinOverlay();
+
+                requestAnimationFrame(loop);
+            }
+
+            // ─── CLICK HANDLING ───────────────────────
+            canvas.addEventListener('click', (e) => {
+                if (locked || gameWon) return;
+                const rect = canvas.getBoundingClientRect();
+                const scaleX = canvas.width / rect.width;
+                const scaleY = canvas.height / rect.height;
+                const mx = (e.clientX - rect.left) * scaleX;
+                const my = (e.clientY - rect.top) * scaleY;
+
+                const card = cards.find(c =>
+                    !c.isFlipped && !c.isMatched &&
+                    mx >= c.x && mx <= c.x + c.w &&
+                    my >= c.y && my <= c.y + c.h
+                );
+
+                if (!card) return;
+                card.isFlipped = true;
+                flipped.push(card);
+
+                if (flipped.length === 2) {
+                    moves++;
+                    locked = true;
+                    updateUI();
+
+                    setTimeout(() => {
+                        const [a, b] = flipped;
+                        if (a.pairId === b.pairId) {
+                            // Match!
+                            a.isMatched = true;
+                            b.isMatched = true;
+                            a.matchGlow = 1;
+                            b.matchGlow = 1;
+                            matched.push(a.id, b.id);
+                            score += Math.max(10, 50 - moves);
+                            updateUI();
+
+                            if (matched.length === TOTAL) {
+                                gameWon = true;
+                                clearInterval(timerInterval);
+                            }
+                        } else {
+                            // No match
+                            a.wrongFlash = 1;
+                            b.wrongFlash = 1;
+                            setTimeout(() => {
+                                a.isFlipped = false;
+                                b.isFlipped = false;
+                            }, 400);
+                        }
+                        flipped = [];
+                        locked = false;
+                    }, 700);
+                }
+            });
+
+            // Cursor feedback
+            canvas.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const scaleX = canvas.width / rect.width;
+                const scaleY = canvas.height / rect.height;
+                const mx = (e.clientX - rect.left) * scaleX;
+                const my = (e.clientY - rect.top) * scaleY;
+                const hovering = cards.some(c =>
+                    !c.isFlipped && !c.isMatched &&
+                    mx >= c.x && mx <= c.x + c.w &&
+                    my >= c.y && my <= c.y + c.h
+                );
+                canvas.style.cursor = hovering ? 'pointer' : 'default';
+            });
+
+            // ─── RESTART ──────────────────────────────
+            restartBtn.addEventListener('click', initGame);
+
+            // ─── INIT ─────────────────────────────────
+            initGame();
+        })();
+    </script>
+</body>
+
+</html>

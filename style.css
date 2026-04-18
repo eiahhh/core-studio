@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=DM+Mono:wght@300;400&display=swap');
+
+root {
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Crimson Pro', serif;
+    --font-mono: 'DM Mono', monospace;
+
+    --color-ink: #08080a;
+    --color-cream: #f0e8d6;
+    --color-gold: #c8a86c;
+    --color-rose: #cE5A67;
+}
+
+/* SCROLL BAR */
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+::-webkit-scrollbar-track {
+    background: #08080a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c8a86c;
+    border-radius: 2px;
+}
+
+/* BASE */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Crimson Pro', serif;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+    font-family: 'Cormorant Garamond', serif;
+}
+
+::selection {
+    background-color: #c8a86c;
+    color: #08080a;
+}
+
+/* HERO ANIMATIONS */
+.anim-fade-up-1 {
+    animation: fadeUp 0.9s 0.1s ease forwards;
+    opacity: 0;
+}
+
+.anim-fade-up-2 {
+    animation: fadeUp 0.9s 0.3s ease forwards;
+    opacity: 0;
+}
+
+.anim-fade-up-3 {
+    animation: fadeUp 0.9s 0.5s ease forwards;
+    opacity: 0;
+}
+
+.anim-fade-up-4 {
+    animation: fadeUp 0.9s 0.7s ease forwards;
+    opacity: 0;
+}
+
+
+/* SCROLL REVEAL */
+.reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.75s ease, transform 0.75 ease;
+}
+
+.reveal.in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.reveal-delay {
+    transition-delay: 0.12s;
+}
+
+.reveal-delay-2 {
+    transition-delay: 0.24s;
+}
+
+.reveal-delay-3 {
+    transition-delay: 0.36s;
+}
+
+.hero-bg {
+    background-image: linear-gradient(to bottom, rgba(10, 6, 0, 0.837) 0%, rgba(20, 10, 0, 0.804) 100%), url('https://i1.wp.com/www.chargespot.com/wp-content/uploads/2019/11/4.jpg?fit=1280%2C854&ssl=1');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.service-bg {
+    background-image: linear-gradient(to bottom, rgba(10, 6, 0, 0.837) 0%, rgba(20, 10, 0, 0.804) 100%), url('https://futureproofagency.com.au/wp-content/uploads/2025/06/DSC_3971.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.about-bg {
+    background-image: linear-gradient(to bottom, rgba(10, 6, 0, 0.837) 0%, rgba(20, 10, 0, 0.804) 100%), url('https://media.istockphoto.com/id/1270196154/photo/meeting-of-diverse-business-partners-in-a-conference-room.jpg?s=612x612&w=0&k=20&c=Vv6DgiOaoRzOIugwW-1ZRx3_25cemsvHlNK6iZdFUPw=');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.faq-bg {
+    background-image: linear-gradient(to bottom, rgba(10, 6, 0, 0.837) 0%, rgba(20, 10, 0, 0.804) 100%), url('https://www.theamateursdigest.com/wp-content/uploads/2021/05/5-Digital-Marketing-Strategies-That-Will-Benefit-Your-Interior-Design-Business.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* FAQs */
+.faq-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.48s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.h-anim {
+    opacity: 0;
+}
+
+.diah.diag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, #c8a86c, transparent);
+}
+
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(141, 98, 28, 0.851);
+}
+
+/* GAME */
+#game {
+    background: var(--ink);
+    text-align: center;
+}
+
+#game .section-label {
+    color: var(--accent);
+}
+
+#game h2 {
+    color: var(--paper);
+}
+
+#game .divider {
+    background: var(--accent);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#game>p {
+    color: rgba(245, 242, 236, 0.5);
+    text-align: center;
+    margin: 0 auto 2.5rem;
+}
+
+.game-wrapper {
+    display: inline-block;
+    position: relative;
+    border: 1px solid rgba(245, 242, 236, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(200, 169, 110, 0.08);
+}
+
+#gameCanvas {
+    display: block;
+    background: #0E0D0C;
+}
+
+.game-ui {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    background: #161412;
+    border-top: 1px solid rgba(245, 242, 236, 0.06);
+}
+
+.game-score {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--accent);
+}
+
+.game-score span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    color: rgba(245, 242, 236, 0.3);
+    margin-right: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+#restartBtn {
+    background: none;
+    border: 1px solid rgba(200, 169, 110, 0.3);
+    color: var(--accent);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s;
+}
+
+#restartBtn:hover {
+    background: rgba(200, 169, 110, 0.1);
+}
